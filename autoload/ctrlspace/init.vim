@@ -13,6 +13,7 @@ function! ctrlspace#init#Init() "{{{
 	au VimEnter * call ctrlspace#buffers#Init()
 
     let g:ctrlspace#mapping#wrapping_around = get(g:, 'ctrlspace#mapping#wrapping_around', 1)
+    let g:ctrlspace#mapping#text_delim = get(g:, 'ctrlspace#mapping#text_delim', '|')
 endfunction "}}}
 
 nnoremap <Plug>(ctrlspace#mapping#NextBuffer) :<c-u>call ctrlspace#mapping#NextBuffer(1)<cr>
