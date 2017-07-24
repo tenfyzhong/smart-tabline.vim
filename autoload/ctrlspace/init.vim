@@ -11,6 +11,5 @@ function! ctrlspace#init#Init()
 
 	au BufEnter * call ctrlspace#buffers#AddBuffer()
 	au VimEnter * call ctrlspace#buffers#Init()
-	au TabEnter * let t:CtrlSpaceTabJumpCounter = ctrlspace#jumps#IncrementJumpCounter()
 endfunction
 

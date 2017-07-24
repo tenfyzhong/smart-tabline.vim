@@ -23,8 +23,6 @@ function! ctrlspace#buffers#AddBuffer() "{{{
 		let s:allBuffers[current] = len(s:allBuffers) + 1
 	endif
 
-	let b:CtrlSpaceJumpCounter = ctrlspace#jumps#IncrementJumpCounter()
-
 	if !exists("t:CtrlSpaceList")
 		let t:CtrlSpaceList = {}
 	endif
