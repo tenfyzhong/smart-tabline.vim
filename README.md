@@ -1,4 +1,7 @@
 # Smart-tabline.vim
+[![GitHub tag](https://img.shields.io/github/tag/tenfyzhong/smart-tabline.vim.svg)](https://github.com/tenfyzhong/smart-tabline.vim/tags)
+![Vim Version](https://img.shields.io/badge/support-Vim%207.0.203%E2%86%91or%20NVIM-yellowgreen.svg?style=flat)
+
 This plugin is fork from [vim-ctrlspace/vim-ctrlspace](https://github.com/vim-ctrlspace/vim-ctrlspace). 
 It remove all features but not tabline. You can't use it with vim-ctrlspace together.  
 
@@ -58,3 +61,5 @@ Contributions and pull requests are welcome.
 
 # LICENSE
 MIT License Copyright (c) 2017 tenfyzhong
+
+[vim-plug]: https://github.com/junegunn/vim-plug
