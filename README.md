@@ -61,3 +61,5 @@ Contributions and pull requests are welcome.
 
 # LICENSE
 MIT License Copyright (c) 2017 tenfyzhong
+
+[vim-plug]: https://github.com/junegunn/vim-plug
