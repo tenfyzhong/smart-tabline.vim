@@ -126,41 +126,46 @@ function! ctrlspace#api#TabList()
         return tabList
 endfunction
 
-function! ctrlspace#api#Tabline()
-	let lastTab    = tabpagenr("$")
+function! ctrlspace#api#Tabline() abort "{{{
 	let currentTab = tabpagenr()
 	let tabline    = ''
+    let bufferList = ctrlspace#api#BufferList(currentTab)
+    let currentBuf = bufnr('%')
+    let leftLen = 0
+    let lastItemIsSel = 1
+    for b in bufferList
+        let text = fnamemodify(b['text'], ':t')
+        let text = text
+        if !lastItemIsSel && b['index'] != currentBuf
+            let text = g:ctrlspace#mapping#text_delim . ' '. text
+        else
+            let text = ' ' . text
+        endif
 
-	for t in range(1, lastTab)
-		let winnr      = tabpagewinnr(t)
-		let buflist    = tabpagebuflist(t)
-		let bufnr      = buflist[winnr - 1]
-		let bufname    = bufname(bufnr)
-		let bufsNumber = ctrlspace#api#TabBuffersNumber(t)
-		let title      = ctrlspace#api#TabTitle(t, bufnr, bufname)
+        if b['index'] == currentBuf
+            let lastItemIsSel = 1
+            let tabline .= '%#TabLineSel#'
+        else
+            let lastItemIsSel = 0
+            let tabline .= '%#TabLine#'
+        endif
 
-		if !empty(bufsNumber)
-			let bufsNumber = ":" . bufsNumber
-		end
+        let tabline .= b['index'] == currentBuf ? '%#TabLineSel#' : '%#TabLine#'
+        let tabline .= text
+        let tabline .= b['modified'] ? '+ ' : '  '
+        let leftLen += len(text) + 2
+    endfor
 
-		let tabline .= '%' . t . 'T'
-		let tabline .= (t == currentTab ? '%#TabLineSel#' : '%#TabLine#')
-		let tabline .= ' ' . t . bufsNumber . ' '
+	let tabline .= '%#TabLineFill#'
+    let tabline .= '%#TabLine#'
+    let right = ' t%(%{tabpagenr()}%)/%(%{tabpagenr("$")}%)'
 
-		if ctrlspace#api#TabModified(t)
-			let tabline .= '+ '
-		endif
+    let space = &columns - leftLen - 3 - len(string(tabpagenr())) - 1 - len(string(tabpagenr('$')))
+    let tabline .= repeat(' ', space)
+    let tabline .= '|'
+    let tabline .= '%#TabLineSel#'
+    let tabline .= right
 
-		let tabline .= title . ' '
-	endfor
-
-	let tabline .= '%#TabLineFill#%T'
-
-	if lastTab > 1
-		let tabline .= '%='
-		let tabline .= '%#TabLine#%999XX'
-	endif
-
-	return tabline
-endfunction
+    return tabline
+endfunction "}}}
 
