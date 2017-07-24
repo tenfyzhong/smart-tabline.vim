@@ -1,4 +1,4 @@
-function! ctrlspace#init#Init()
+function! ctrlspace#init#Init() "{{{
     set tabline=%!ctrlspace#api#Tabline()
 
     if has("gui_running") && (&go =~# "e")
@@ -11,5 +11,10 @@ function! ctrlspace#init#Init()
 
 	au BufEnter * call ctrlspace#buffers#AddBuffer()
 	au VimEnter * call ctrlspace#buffers#Init()
-endfunction
+
+    let g:ctrlspace#mapping#wrapping_around = get(g:, 'ctrlspace#mapping#wrapping_around', 1)
+endfunction "}}}
+
+nnoremap <Plug>(ctrlspace#mapping#NextBuffer) :<c-u>call ctrlspace#mapping#NextBuffer(1)<cr>
+nnoremap <Plug>(ctrlspace#mapping#PreviousBuffer) :<c-u>call ctrlspace#mapping#NextBuffer(0)<cr>
 
