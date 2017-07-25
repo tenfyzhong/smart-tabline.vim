@@ -82,7 +82,11 @@ function! ctrlspace#api#TabTitle(tabnr, bufnr, bufname)
 		if empty(bufname)
 			let title = "[" . bufnr . "*No Name]"
 		else
-			let title = "[" . fnamemodify(bufname, ':t') . "]"
+            if g:ctrlspace#tabline#fnamemod != ''
+                let title = "[" . fnamemodify(bufname, g:ctrlspace#tabline#fnamemod) . "]"
+            else
+                let title = "[" . bufname . "]"
+            endif
 		endif
 	endif
 
@@ -140,8 +144,10 @@ function! ctrlspace#api#Tabline() abort "{{{
     let leftLen = 0
     let lastItemIsSel = 1
     for b in bufferList
-        let text = fnamemodify(b['text'], ':t')
-        let text = text
+        let text = b['text']
+        if g:ctrlspace#tabline#fnamemod != ''
+            let text = fnamemodify(text, g:ctrlspace#tabline#fnamemod)
+        endif
         if !lastItemIsSel && b['index'] != currentBuf
             let text = g:ctrlspace#tabline#sep . ' '. text
         else

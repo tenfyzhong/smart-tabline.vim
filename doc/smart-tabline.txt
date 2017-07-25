@@ -77,6 +77,11 @@ Values:
 Default: `i` >
   let g:ctrlspace#tabline#sort_method
 <
-
+                                                    *g:ctrlspace#tabline#fnamemod*
+### g:ctrlspace#tabline#fnamemod
+Configure the formmating of filename(see |filename-modifiers|). 
+Default: ':t' >
+  let g:ctrlspace#tabline#fnamemod = ':t'
+<
 
 " vim:ft=help:iskeyword+=-:iskeyword+=58:iskeyword+=#
