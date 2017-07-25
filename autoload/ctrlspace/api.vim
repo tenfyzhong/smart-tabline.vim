@@ -19,7 +19,13 @@ function! ctrlspace#api#BufferList(tabnr)
 		endif
 	endfor
 
-	call sort(bufferList, function("ctrlspace#engine#CompareByText"))
+    if g:ctrlspace#tabline#sort_method == 't'
+        call sort(bufferList, function("ctrlspace#sort#CompareByText"))
+    elseif g:ctrlspace#tabline#sort_method == 'p'
+        call sort(bufferList, function("ctrlspace#sort#CompareByPath"))
+    else
+        call sort(bufferList, function("ctrlspace#sort#CompareByIndex"))
+    endif
 
 	return bufferList
 endfunction

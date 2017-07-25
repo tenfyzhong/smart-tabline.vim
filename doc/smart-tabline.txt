@@ -58,16 +58,25 @@ If the value this option is true, it will goto the first buffer if you are in
 the last one and call the `<Plug>(ctrlspace#mapping#NextBuffer)` mapping. 
 Similarly, it will goto the last buffer if you are in the first one and call the
 `<Plug>(ctrlspace#mapping#PreviouBuffer)` mapping.  
-Default:  
-```viml
-let g:ctrlspace#tabline#wrapping_around = 1
-```
-                                                  *g:ctrlspace#tabline#sep*
+Default:  >
+  let g:ctrlspace#tabline#wrapping_around = 1
+<
+                                                         *g:ctrlspace#tabline#sep*
 ### `g:ctrlspace#tabline#sep`
 This option set the delimiter of the buffer name.  
-Default:
-```viml
-let g:ctrlspace#tabline#sep = '|'
-```
+Default:  >
+  let g:ctrlspace#tabline#sep = '|'
+<
+                                                 *g:ctrlspace#tabline#sort_method*
+### g:ctrlspace#tabline#sort_method
+Sort the item in the tabline.  
+Values: 
+`i`: sort by open order. 
+`t`: sort by display text. 
+`p`: sort by the path of the item. 
+Default: `i` >
+  let g:ctrlspace#tabline#sort_method
+<
+
 
 " vim:ft=help:iskeyword+=-:iskeyword+=58:iskeyword+=#
