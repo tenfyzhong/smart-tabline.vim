@@ -19,7 +19,13 @@ function! ctrlspace#api#BufferList(tabnr)
 		endif
 	endfor
 
-	call sort(bufferList, function("ctrlspace#engine#CompareByText"))
+    if g:ctrlspace#tabline#sort_method == 't'
+        call sort(bufferList, function("ctrlspace#sort#CompareByText"))
+    elseif g:ctrlspace#tabline#sort_method == 'p'
+        call sort(bufferList, function("ctrlspace#sort#CompareByPath"))
+    else
+        call sort(bufferList, function("ctrlspace#sort#CompareByIndex"))
+    endif
 
 	return bufferList
 endfunction
@@ -76,7 +82,11 @@ function! ctrlspace#api#TabTitle(tabnr, bufnr, bufname)
 		if empty(bufname)
 			let title = "[" . bufnr . "*No Name]"
 		else
-			let title = "[" . fnamemodify(bufname, ':t') . "]"
+            if g:ctrlspace#tabline#fnamemod != ''
+                let title = "[" . fnamemodify(bufname, g:ctrlspace#tabline#fnamemod) . "]"
+            else
+                let title = "[" . bufname . "]"
+            endif
 		endif
 	endif
 
@@ -134,10 +144,12 @@ function! ctrlspace#api#Tabline() abort "{{{
     let leftLen = 0
     let lastItemIsSel = 1
     for b in bufferList
-        let text = fnamemodify(b['text'], ':t')
-        let text = text
+        let text = b['text']
+        if g:ctrlspace#tabline#fnamemod != ''
+            let text = fnamemodify(text, g:ctrlspace#tabline#fnamemod)
+        endif
         if !lastItemIsSel && b['index'] != currentBuf
-            let text = g:ctrlspace#mapping#text_delim . ' '. text
+            let text = g:ctrlspace#tabline#sep . ' '. text
         else
             let text = ' ' . text
         endif

@@ -12,6 +12,12 @@ The second tab has 2 buffers, `1.txt` and `2.txt`. The tabline only show `a.txt`
 and `b.txt` when you are in the first tab. If you go to the second tab use `gt`, 
 The tabline will show `1.txt` and `2.txt`.  
 
+# Screenshot
+![tabline](http://wx3.sinaimg.cn/mw690/69472223gy1fhw3oe5a43g20hs073n3d.gif)
+
+Integrates with [airline][]  
+![tabline-airline](http://wx4.sinaimg.cn/mw690/69472223gy1fhw3of6c7yj20gh06jjrh.jpg)
+
 # Install
 I suggest you to use a plugin manager, such vim-plug or other.
 - [vim-plug][]
@@ -38,24 +44,6 @@ The mapping to edit previous buffer in the tabline. eg:
 nmap <leader>h <Plug>(ctrlspace#mapping#PreviousBuffer)
 ```
 
-# Options
-### `g:ctrlspace#mapping#wrapping_around`
-If the value this option is true, it will goto the first buffer if you are in 
-the last one and call the `<Plug>(ctrlspace#mapping#NextBuffer)` mapping. 
-Similarly, it will goto the last buffer if you are in the first one and call the
-`<Plug>(ctrlspace#mapping#PreviouBuffer)` mapping.  
-Default:  
-```viml
-let g:ctrlspace#mapping#wrapping_around = 1
-```
-
-### `g:ctrlspace#mapping#text_delim`
-This option set the delimiter of the buffer name.  
-Default:
-```viml
-let g:ctrlspace#mapping#text_delim = '|'
-```
-
 # Contributions 
 Contributions and pull requests are welcome.
 
@@ -63,3 +51,4 @@ Contributions and pull requests are welcome.
 MIT License Copyright (c) 2017 tenfyzhong
 
 [vim-plug]: https://github.com/junegunn/vim-plug
+[airline]: https://github.com/vim-airline/vim-airline
