@@ -137,7 +137,7 @@ function! ctrlspace#api#Tabline() abort "{{{
         let text = fnamemodify(b['text'], ':t')
         let text = text
         if !lastItemIsSel && b['index'] != currentBuf
-            let text = g:ctrlspace#mapping#text_delim . ' '. text
+            let text = g:ctrlspace#tabline#sep . ' '. text
         else
             let text = ' ' . text
         endif

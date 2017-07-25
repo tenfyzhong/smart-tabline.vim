@@ -39,21 +39,21 @@ nmap <leader>h <Plug>(ctrlspace#mapping#PreviousBuffer)
 ```
 
 # Options
-### `g:ctrlspace#mapping#wrapping_around`
+### `g:ctrlspace#tabline#wrapping_around`
 If the value this option is true, it will goto the first buffer if you are in 
 the last one and call the `<Plug>(ctrlspace#mapping#NextBuffer)` mapping. 
 Similarly, it will goto the last buffer if you are in the first one and call the
 `<Plug>(ctrlspace#mapping#PreviouBuffer)` mapping.  
 Default:  
 ```viml
-let g:ctrlspace#mapping#wrapping_around = 1
+let g:ctrlspace#tabline#wrapping_around = 1
 ```
 
-### `g:ctrlspace#mapping#text_delim`
+### `g:ctrlspace#tabline#sep`
 This option set the delimiter of the buffer name.  
 Default:
 ```viml
-let g:ctrlspace#mapping#text_delim = '|'
+let g:ctrlspace#tabline#sep = '|'
 ```
 
 # Contributions 
