@@ -12,8 +12,10 @@ function! ctrlspace#init#Init() "{{{
 	au BufEnter * call ctrlspace#buffers#AddBuffer()
 	au VimEnter * call ctrlspace#buffers#Init()
 
-    let g:ctrlspace#mapping#wrapping_around = get(g:, 'ctrlspace#mapping#wrapping_around', 1)
-    let g:ctrlspace#mapping#text_delim = get(g:, 'ctrlspace#mapping#text_delim', '|')
+    let g:ctrlspace#tabline#wrapping_around = get(g:, 'ctrlspace#tabline#wrapping_around', 1)
+    let g:ctrlspace#tabline#sep = get(g:, 'ctrlspace#tabline#sep', '|')
+    let g:ctrlspace#tabline#sort_method = get(g:, 'ctrlspace#tabline#sort_method', 'i')
+    let g:ctrlspace#tabline#fnamemod = get(g:, 'ctrlspace#tabline#fnamemod', ':t')
 endfunction "}}}
 
 nnoremap <Plug>(ctrlspace#mapping#NextBuffer) :<c-u>call ctrlspace#mapping#NextBuffer(1)<cr>

@@ -52,22 +52,36 @@ The mapping to edit previous buffer in the tabline. eg:  >
 
 ================================================================================
 3. Options                                                 *smart-tabline-options*
-                                             *g:ctrlspace#mapping#wrapping_around*
-### `g:ctrlspace#mapping#wrapping_around`
+                                             *g:ctrlspace#tabline#wrapping_around*
+### `g:ctrlspace#tabline#wrapping_around`
 If the value this option is true, it will goto the first buffer if you are in 
 the last one and call the `<Plug>(ctrlspace#mapping#NextBuffer)` mapping. 
 Similarly, it will goto the last buffer if you are in the first one and call the
 `<Plug>(ctrlspace#mapping#PreviouBuffer)` mapping.  
-Default:  
-```viml
-let g:ctrlspace#mapping#wrapping_around = 1
-```
-                                                  *g:ctrlspace#mapping#text_delim*
-### `g:ctrlspace#mapping#text_delim`
+Default:  >
+  let g:ctrlspace#tabline#wrapping_around = 1
+<
+                                                         *g:ctrlspace#tabline#sep*
+### `g:ctrlspace#tabline#sep`
 This option set the delimiter of the buffer name.  
-Default:
-```viml
-let g:ctrlspace#mapping#text_delim = '|'
-```
+Default:  >
+  let g:ctrlspace#tabline#sep = '|'
+<
+                                                 *g:ctrlspace#tabline#sort_method*
+### g:ctrlspace#tabline#sort_method
+Sort the item in the tabline.  
+Values: 
+`i`: sort by open order. 
+`t`: sort by display text. 
+`p`: sort by the path of the item. 
+Default: `i` >
+  let g:ctrlspace#tabline#sort_method
+<
+                                                    *g:ctrlspace#tabline#fnamemod*
+### g:ctrlspace#tabline#fnamemod
+Configure the formmating of filename(see |filename-modifiers|). 
+Default: ':t' >
+  let g:ctrlspace#tabline#fnamemod = ':t'
+<
 
 " vim:ft=help:iskeyword+=-:iskeyword+=58:iskeyword+=#

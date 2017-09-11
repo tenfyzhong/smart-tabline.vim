@@ -33,7 +33,7 @@ function! s:NextCurBufnr(forward, wrapping_around) "{{{
 endfunction "}}}
 
 function! ctrlspace#mapping#NextBuffer(forward) "{{{
-    let nextBufnr = <SID>NextCurBufnr(a:forward, g:ctrlspace#mapping#wrapping_around)
+    let nextBufnr = <SID>NextCurBufnr(a:forward, g:ctrlspace#tabline#wrapping_around)
     if nextBufnr == 0
         echom "No next buffer"
         return
